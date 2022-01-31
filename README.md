@@ -1,6 +1,5 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# nhl-stats-react
+This is a project to learn React.js
 
 ## Available Scripts
 
