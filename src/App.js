@@ -1,5 +1,5 @@
 import Header from './components/Header'
-import ScoresContainer from './components/scores/ScoresContainer';
+import GameScores from './components/scores/GameScores';
 import Stats from './components/stats/Stats';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
@@ -9,7 +9,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path='/' element={<ScoresContainer />} />
+          <Route path='/' element={<GameScores />} />
           <Route path='/stats' element={<Stats />} />
         </Routes>
       </Router>

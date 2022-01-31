@@ -40,10 +40,11 @@ function createGameScore(game) {
     awayTeam = {game.teams.away.team.name}
     awayScore = {game.teams.away.score}
     homeTeam = {game.teams.home.team.name}
-    homeScore = {game.teams.home.score} />
+    homeScore = {game.teams.home.score}
+    gameState = {game.status.abstractGameState} />
 };
 
-const ScoresContainer = () => {
+const GameScores = () => {
     const [gameList, setGameList] = useState();
     const [loading, setLoading] = useState(true);
     useEffect(() => {
@@ -72,9 +73,11 @@ const ScoresContainer = () => {
             <div>
                 <h2 className='text-3xl'>{getDate()}</h2>
             </div>
-            {gameList.map(createGameScore)}
+            <div className="grid grid-cols-2 gap-4">
+                {gameList.map(createGameScore)}
+            </div>
         </div>
     );
 };
 
-export default ScoresContainer;
+export default GameScores;
