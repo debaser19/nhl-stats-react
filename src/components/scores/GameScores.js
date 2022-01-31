@@ -41,7 +41,7 @@ function createGameScore(game) {
     awayScore = {game.teams.away.score}
     homeTeam = {game.teams.home.team.name}
     homeScore = {game.teams.home.score}
-    gameState = {game.status.abstractGameState} />
+    gameState = {game.status.codedGameState} />
 };
 
 const GameScores = () => {
