@@ -7,19 +7,24 @@ const GameScore = (props) => {
       gameBorder = 'border-red-400';
       break;
     
-    case '6': // shootout?
+    case '6': // overtime?
+      gameBorder = 'border-orange-400'
       break;
 
-    case '5': // overtime?
+    case '5': // 3rd period
+      gameBorder = 'border-green-400';
       break;
 
-    case '4': // 3rd period?
+    case '4': // 2nd period
+      gameBorder = 'border-green-400';
       break;
 
-    case '3': // 2nd period?
+    case '3': // 1st period
+      gameBorder = 'border-green-400';
       break;
 
-    case '2': // 1st period?
+    case '2': // pre-game
+      gameBorder = 'border-yellow-400';
       break;
     
     case '1': // game scheduled - not started

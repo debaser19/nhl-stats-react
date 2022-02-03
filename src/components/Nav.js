@@ -10,6 +10,9 @@ const Nav = () => {
         <li className=''>
             <Link className='text-slate-100 hover:text-slate-300 mx-5' to='stats'>Stats</Link>
         </li>
+        <li className=''>
+            <Link className='text-slate-100 hover:text-slate-300 mx-5' to='standings'>Standings</Link>
+        </li>
     </ul>
   )
 }
