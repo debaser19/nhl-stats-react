@@ -15,3 +15,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.standings-table td {
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+}

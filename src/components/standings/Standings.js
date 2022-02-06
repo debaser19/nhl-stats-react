@@ -30,9 +30,10 @@ const Standings = () => {
     if(loading) return <div className='container mx-auto content-center text-center min-h-full text-4xl'><h1>Loading...</h1></div>
 
     return (
-        <div>
-            <p>This it the standings page.</p>
-            {standingsList.map(createDivisionCard)}
+        <div className='container mx-auto content-center'>
+            <div className = 'grid grid-cols-2 gap-4'>
+                {standingsList.map(createDivisionCard)}
+            </div>
         </div>
     )
 }
