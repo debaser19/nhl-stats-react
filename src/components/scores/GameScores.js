@@ -73,7 +73,7 @@ const GameScores = () => {
             <div>
                 <h2 className='text-3xl'>{selectedDate.toISOString().substring(0,10)}</h2>
             </div>
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {gameList.map(createGameScore)}
             </div>
         </div>
