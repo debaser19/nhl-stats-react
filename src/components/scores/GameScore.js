@@ -1,7 +1,12 @@
 import React from 'react';
+import { format } from 'date-fns';
 
 function parseRecord(leagueRecord) {
 	return `${leagueRecord.wins}-${leagueRecord.losses}-${leagueRecord.ot}`
+}
+
+function parseGameTime(timeString) {
+	return format(new Date(timeString), 'h:mm a')
 }
 
 const GameScore = (props) => {
@@ -36,11 +41,12 @@ const GameScore = (props) => {
   };
 
   return (
-    <div key={props.key} className={'container mx-auto score-container m-2 max-w-2xl border-2 ' + gameBorder}>
+    <div className={'container mx-auto score-container m-2 max-w-2xl border-2 ' + gameBorder}>
         <div className='away-container flow-root'>
 			<div className='away-team mx-2 min-w-[50%] float-left'>
             	<div className='text-2xl'>{props.awayTeam}</div>
 				<div className='text-gray-400'>{parseRecord(props.awayRecord)}</div>
+				<div>Start Time: {parseGameTime(props.gameTime)}</div>
 			</div>
             <div className='away-score mx-5 text-3xl float-right'>{props.awayScore}</div>
         </div>

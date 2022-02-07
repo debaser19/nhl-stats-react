@@ -12,7 +12,8 @@ function createGameScore(game) {
     homeTeam = {game.teams.home.team.name}
     homeRecord = {game.teams.home.leagueRecord}
     homeScore = {game.teams.home.score}
-    gameState = {game.status.codedGameState} />
+    gameState = {game.status.codedGameState}
+    gameTime = {game.gameDate} />
 };
 
 const GameScores = () => {
