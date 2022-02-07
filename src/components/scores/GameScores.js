@@ -40,7 +40,7 @@ const GameScores = () => {
     }, [selectedDate]);
 
     if(loading) return (
-        <div className='container mx-auto content-center text-center min-h-full text-4xl'>
+        <div className='container'>
             <div className='date-picker-div'>
                 <h2 className='text-2xl'>Select a date</h2>
                 <DatePicker
@@ -50,7 +50,7 @@ const GameScores = () => {
                     dateFormat='yyyy-MM-dd'
                 />
             </div>
-            <h1>Loading...</h1>
+            <h1 className='content-center text-center min-h-full text-4xl'>Loading...</h1>
         </div>
     );
     
