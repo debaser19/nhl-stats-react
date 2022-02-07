@@ -1,14 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import SavePercentageLeader from './SavePercentageLeader';
-
-function createSavePercentageLeader(leader) {
-    return <SavePercentageLeader
-    key={leader.person.id}
-    rank={leader.rank}
-    player={leader.person.fullName}
-    value={leader.value} />
-};
 
 const SavePercentageLeaders = () => {
     const [savePercentageLeaders, setSavePercentageLeaders] = useState();
@@ -22,13 +13,17 @@ const SavePercentageLeaders = () => {
                 setSavePercentageLeaders(leaders.leagueLeaders[0].leaders);
                 setLoading(false);
             } catch (error) {
-                console.log("Error", error)
+                console.log("Error", error);
             }
         };
         fetchSavePercentageLeaders();
     }, [])
 
-    if(loading) return <div className='container mx-auto content-center text-center min-h-full text-4xl'><h1>Loading...</h1></div>
+    if(loading) return (
+        <div className='container mx-auto content-center text-center min-h-full text-4xl'>
+            <h1>Loading...</h1>
+        </div>
+    );
 
     return (
         <div>
@@ -36,17 +31,21 @@ const SavePercentageLeaders = () => {
             <table className='table-auto text-center'>
                 <thead>
                     <tr>
-                        <th>Rank</th>
                         <th>Player</th>
                         <th>SV%</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {savePercentageLeaders.map(createSavePercentageLeader)}
+                    {savePercentageLeaders.map(savePercentageLeader => (
+                        <tr key={savePercentageLeader.key}>
+                            <td>{savePercentageLeader.person.fullName}</td>
+                            <td>{savePercentageLeader.value}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
-    )
-}
+    );
+};
 
 export default SavePercentageLeaders;

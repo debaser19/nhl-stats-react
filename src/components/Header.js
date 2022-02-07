@@ -7,7 +7,7 @@ function Header() {
             <Link to='/' className="text-5xl font-medium text-slate-100">NHL Stats</Link>
             <Nav />
         </header>
-    )
-}
+    );
+};
 
 export default Header;

@@ -16,7 +16,36 @@ code {
     monospace;
 }
 
-.standings-table td {
+.standings-table {
+  text-align: center;
+}
+.standings-table td, .standings-table th {
   border: 1px solid #ccc;
   padding: 5px 10px;
+}
+.standings-table th {
+  font-weight: bold;
+}
+
+.stats table {
+  text-align: left;
+}
+.stats td, .stats th {
+  padding: 5px 10px;
+}
+.stats td:last-child {
+  text-align: center;
+  font-weight: bold;
+}
+
+.date-picker-div {
+  margin: 0 auto;
+  max-width: 20%;
+  text-align: center;
+}
+
+.date-picker {
+  text-align: center;
+  border: 2px solid rgb(15,23,42);
+  border-radius: 10px;
 }

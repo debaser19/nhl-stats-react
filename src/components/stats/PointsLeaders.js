@@ -1,14 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import PointsLeader from './PointsLeader';
-
-function createPointsLeader(leader) {
-    return <PointsLeader
-    key={leader.person.id}
-    rank={leader.rank}
-    player={leader.person.fullName}
-    value={leader.value} />
-};
 
 const PointsLeaders = () => {
     const [pointsLeaders, setPointsLeaders] = useState();
@@ -22,13 +13,17 @@ const PointsLeaders = () => {
                 setPointsLeaders(leaders.leagueLeaders[0].leaders);
                 setLoading(false);
             } catch (error) {
-                console.log("Error", error)
+                console.log("Error", error);
             }
         };
         fetchPointsLeaders();
     }, [])
 
-    if(loading) return <div className='container mx-auto content-center text-center min-h-full text-4xl'><h1>Loading...</h1></div>
+    if(loading) return (
+        <div className='container mx-auto content-center text-center min-h-full text-4xl'>
+            <h1>Loading...</h1>
+        </div>
+    );
 
     return (
         <div>
@@ -36,17 +31,21 @@ const PointsLeaders = () => {
             <table className='table-auto text-center'>
                 <thead>
                     <tr>
-                        <th>Rank</th>
                         <th>Player</th>
                         <th>Points</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {pointsLeaders.map(createPointsLeader)}
+                    {pointsLeaders.map(pointsLeader => (
+                        <tr key={pointsLeader.key}>
+                            <td>{pointsLeader.person.fullName}</td>
+                            <td>{pointsLeader.value}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
-    )
-}
+    );
+};
 
 export default PointsLeaders;

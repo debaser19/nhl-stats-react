@@ -1,14 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import AssistsLeader from './AssistsLeader';
-
-function createAssistsLeader(leader) {
-    return <AssistsLeader
-    key={leader.person.id}
-    rank={leader.rank}
-    player={leader.person.fullName}
-    value={leader.value} />
-};
 
 const AssistsLeaders = () => {
     const [assistsLeaders, setAssistsLeaders] = useState();
@@ -22,13 +13,17 @@ const AssistsLeaders = () => {
                 setAssistsLeaders(leaders.leagueLeaders[0].leaders);
                 setLoading(false);
             } catch (error) {
-                console.log("Error", error)
+                console.log("Error", error);
             }
         };
         fetchAssistsLeaders();
-    }, [])
+    }, []);
 
-    if(loading) return <div className='container mx-auto content-center text-center min-h-full text-4xl'><h1>Loading...</h1></div>
+    if(loading) return (
+        <div className='container mx-auto content-center text-center min-h-full text-4xl'>
+            <h1>Loading...</h1>
+        </div>
+    );
 
     return (
         <div>
@@ -36,17 +31,21 @@ const AssistsLeaders = () => {
             <table className='table-auto text-center'>
                 <thead>
                     <tr>
-                        <th>Rank</th>
                         <th>Player</th>
                         <th>Assists</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {assistsLeaders.map(createAssistsLeader)}
+                    {assistsLeaders.map(assistsLeaders => (
+                        <tr key={assistsLeaders.key}>
+                            <td>{assistsLeaders.person.fullName}</td>
+                            <td>{assistsLeaders.value}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
-    )
-}
+    );
+};
 
 export default AssistsLeaders;

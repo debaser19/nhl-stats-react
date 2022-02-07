@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import DivisionCard from './DivisionCard'
+import DivisionCard from './DivisionCard';
 
 function createDivisionCard(standings) {
-    return <DivisionCard
-    key = {standings.division.id}
-    division = {standings.division.name}
-    teamRecords = {standings.teamRecords}
-    />
-}
+    return (
+        <DivisionCard
+        key = {standings.division.id}
+        division = {standings.division.name}
+        teamRecords = {standings.teamRecords}
+        />
+    );
+};
 
 const Standings = () => {
     const [standingsList, setStandingsList] = useState();
@@ -21,13 +23,17 @@ const Standings = () => {
                 setStandingsList(standings.records);
                 setLoading(false);
             } catch (error) {
-                console.log('Error', error)
-            }
+                console.log('Error', error);
+            };
         };
         fetchStandings();
     }, []);
 
-    if(loading) return <div className='container mx-auto content-center text-center min-h-full text-4xl'><h1>Loading...</h1></div>
+    if(loading) return (
+        <div className='container mx-auto content-center text-center min-h-full text-4xl'>
+            <h1>Loading...</h1>
+        </div>
+    );
 
     return (
         <div className='container mx-auto content-center'>
@@ -35,7 +41,7 @@ const Standings = () => {
                 {standingsList.map(createDivisionCard)}
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Standings
+export default Standings;

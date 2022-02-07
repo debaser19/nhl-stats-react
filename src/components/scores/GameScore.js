@@ -30,7 +30,6 @@ const GameScore = (props) => {
     case '1': // game scheduled - not started
       gameBorder = 'border-slate-300';
   };
-  console.log(props.gameState)
 
   return (
     <div key={props.key} className={'container mx-auto score-container m-2 max-w-2xl border-2 ' + gameBorder}>

@@ -1,34 +1,32 @@
-import React from 'react'
-import TeamsList from './TeamsList'
+import React from 'react';
 
 const DivisionCard = (props) => {
-    const getTeams = (teams) => {
-        return <TeamsList
-        key = {teams.team.id}
-        teamName = {teams.team.name}
-        teamPoints = {teams.points}
-        teamWins = {teams.leagueRecord.wins}
-        teamLosses = {teams.leagueRecord.losses}
-        teamOT = {teams.leagueRecord.ot} />
-    }
     return (
         <div>
             <h2 className='text-2xl'>{props.division}</h2>
-            <table className = 'standings-table'>
+            <table className='standings-table'>
                 <thead>
                     <tr>
-                        <td>Team</td>
-                        <td>Points</td>
-                        <td>Wins</td>
-                        <td>Losses</td>
-                        <td>OT</td>
+                        <th>Team</th>
+                        <th>Points</th>
+                        <th>Wins</th>
+                        <th>Losses</th>
+                        <th>OT</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {props.teamRecords.map(getTeams)}
+                    {props.teamRecords.map(teams => (
+                        <tr key={teams.team.id}>
+                            <td>{teams.team.name}</td>
+                            <td>{teams.points}</td>
+                            <td>{teams.leagueRecord.wins}</td>
+                            <td>{teams.leagueRecord.losses}</td>
+                            <td>{teams.leagueRecord.ot}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
-    )   
-}
-export default DivisionCard      
+    );
+};
+export default DivisionCard;

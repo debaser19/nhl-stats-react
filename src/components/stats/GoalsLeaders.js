@@ -1,14 +1,5 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import GoalsLeader from './GoalsLeader';
-
-function createGoalsLeader(leader) {
-    return <GoalsLeader
-    key={leader.person.id}
-    rank={leader.rank}
-    player={leader.person.fullName}
-    value={leader.value} />
-};
 
 const GoalsLeaders = () => {
     const [goalsLeaders, setGoalsLeaders] = useState();
@@ -22,13 +13,17 @@ const GoalsLeaders = () => {
                 setGoalsLeaders(leaders.leagueLeaders[0].leaders);
                 setLoading(false);
             } catch (error) {
-                console.log("Error", error)
+                console.log("Error", error);
             }
         };
         fetchGoalsLeaders();
     }, [])
 
-    if(loading) return <div className='container mx-auto content-center text-center min-h-full text-4xl'><h1>Loading...</h1></div>
+    if(loading) return (
+        <div className='container mx-auto content-center text-center min-h-full text-4xl'>
+            <h1>Loading...</h1>
+        </div>
+    );
 
     return (
         <div>
@@ -36,17 +31,21 @@ const GoalsLeaders = () => {
             <table className='table-auto text-center'>
                 <thead>
                     <tr>
-                        <th>Rank</th>
                         <th>Player</th>
                         <th>Goals</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {goalsLeaders.map(createGoalsLeader)}
+                    {goalsLeaders.map(goalsLeader => (
+                        <tr key={goalsLeader.key}>
+                            <td>{goalsLeader.person.fullName}</td>
+                            <td>{goalsLeader.value}</td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
-    )
-}
+    );
+};
 
 export default GoalsLeaders;
