@@ -1,6 +1,9 @@
 # nhl-stats-react
 This is a project to learn React.js
 
+## Live Demo
+https://nhl-stats-react.stoveld.xyz/
+
 ## Available Scripts
 
 In the project directory, you can run:
