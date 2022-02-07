@@ -8,7 +8,9 @@ function createGameScore(game) {
     key = {game.gamePk}
     awayTeam = {game.teams.away.team.name}
     awayScore = {game.teams.away.score}
+    awayRecord = {game.teams.away.leagueRecord}
     homeTeam = {game.teams.home.team.name}
+    homeRecord = {game.teams.home.leagueRecord}
     homeScore = {game.teams.home.score}
     gameState = {game.status.codedGameState} />
 };
@@ -45,6 +47,7 @@ const GameScores = () => {
                 <h2 className='text-2xl'>Select a date</h2>
                 <DatePicker
                     className='date-picker'
+                    todayButton='Today'
                     selected={selectedDate}
                     onChange={date => setSelectedDate(date)}
                     dateFormat='yyyy-MM-dd'
@@ -60,6 +63,7 @@ const GameScores = () => {
                 <h2 className='text-2xl'>Select a date</h2>
                 <DatePicker
                     className='date-picker'
+                    todayButton='Today'
                     selected={selectedDate}
                     onChange={date => setSelectedDate(date)}
                     dateFormat='yyyy-MM-dd'

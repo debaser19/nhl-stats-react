@@ -1,5 +1,9 @@
 import React from 'react';
 
+function parseRecord(leagueRecord) {
+	return `${leagueRecord.wins}-${leagueRecord.losses}-${leagueRecord.ot}`
+}
+
 const GameScore = (props) => {
   let gameBorder = ''
   switch (props.gameState) {
@@ -34,12 +38,18 @@ const GameScore = (props) => {
   return (
     <div key={props.key} className={'container mx-auto score-container m-2 max-w-2xl border-2 ' + gameBorder}>
         <div className='away-container flow-root'>
-            <div className='away-team m-5 min-w-[50%] text-2xl float-left'>{props.awayTeam}</div>
-            <div className='away-score m-5 text-3xl float-right'>{props.awayScore}</div>
+			<div className='away-team mx-2 min-w-[50%] float-left'>
+            	<div className='text-2xl'>{props.awayTeam}</div>
+				<div className='text-gray-400'>{parseRecord(props.awayRecord)}</div>
+			</div>
+            <div className='away-score mx-5 text-3xl float-right'>{props.awayScore}</div>
         </div>
         <div className='home-container flow-root'>
-            <div className='home-team m-5 min-w-[50%] text-2xl float-left'>{props.homeTeam}</div>
-            <div className='home-score m-5 text-3xl float-right'>{props.homeScore}</div>
+			<div className='home-team mx-2 min-w-[50%] float-left'>
+            	<div className='text-2xl'>{props.homeTeam}</div>
+				<div className='text-gray-400'>{parseRecord(props.homeRecord)}</div>
+			</div>
+			<div className='home-score mx-5 text-3xl float-right'>{props.homeScore}</div>
         </div>
     </div>
   );
