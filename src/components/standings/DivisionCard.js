@@ -8,6 +8,7 @@ const DivisionCard = (props) => {
                 <thead>
                     <tr>
                         <th>Team</th>
+                        <th>GP</th>
                         <th>Points</th>
                         <th>Wins</th>
                         <th>Losses</th>
@@ -18,7 +19,8 @@ const DivisionCard = (props) => {
                     {props.teamRecords.map(teams => (
                         <tr key={teams.team.id}>
                             <td>{teams.team.name}</td>
-                            <td>{teams.points}</td>
+                            <td>{teams.gamesPlayed}</td>
+                            <td><strong>{teams.points}</strong></td>
                             <td>{teams.leagueRecord.wins}</td>
                             <td>{teams.leagueRecord.losses}</td>
                             <td>{teams.leagueRecord.ot}</td>
