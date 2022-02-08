@@ -43,10 +43,13 @@ const GameScore = (props) => {
   return (
     <div className={'container mx-auto score-container m-2 max-w-2xl border-2 ' + gameBorder}>
         <div className='away-container flow-root'>
+			<div className='time-venue-div'>
+				<p>{parseGameTime(props.gameTime)}</p>
+				<p>{props.venue}</p>
+			</div>
 			<div className='away-team mx-2 min-w-[50%] float-left'>
             	<div className='text-2xl'>{props.awayTeam}</div>
 				<div className='text-gray-400'>{parseRecord(props.awayRecord)}</div>
-				<div>Start Time: {parseGameTime(props.gameTime)}</div>
 			</div>
             <div className='away-score mx-5 text-3xl float-right'>{props.awayScore}</div>
         </div>

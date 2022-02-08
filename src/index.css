@@ -49,3 +49,12 @@ code {
   border: 2px solid rgb(15,23,42);
   border-radius: 10px;
 }
+
+.time-venue-div {
+  margin: 5px 10px;
+  justify-content: space-between;
+  display: flex;
+}
+.time-venue-div p:first-child {
+  font-weight: bold;
+}

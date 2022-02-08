@@ -14,13 +14,15 @@ function createGameScore(game) {
     homeRecord = {game.teams.home.leagueRecord}
     homeScore = {game.teams.home.score}
     gameState = {game.status.codedGameState}
-    gameTime = {game.gameDate} />
+    gameTime = {game.gameDate}
+    venue = {game.venue.name} />
 };
 
 const GameScores = () => {
     const [gameList, setGameList] = useState();
     const [loading, setLoading] = useState(true);
     const [selectedDate, setSelectedDate] = useState(new Date());
+    const [gameCount, setGameCount] = useState(0);
     const baseUrl = 'https://statsapi.web.nhl.com/api/v1/schedule/';
     let fullUrl = baseUrl;
     useEffect(() => {
@@ -36,8 +38,10 @@ const GameScores = () => {
                 const games = await res.json();
                 setGameList(games.dates[0].games);
                 setLoading(false);
+                setGameCount(games.dates[0].games.length);
             } catch (error) {
                 console.log("Error", error);
+                setGameCount(0)
             }
         };
         fetchGames();
@@ -56,6 +60,22 @@ const GameScores = () => {
                 />
             </div>
             <h1 className='content-center text-center min-h-full text-4xl'>Loading...</h1>
+        </div>
+    );
+
+    if (gameCount === 0) return (
+        <div className='container'>
+            <div className='date-picker-div'>
+                <h2 className='text-2xl'>Select a date</h2>
+                <DatePicker
+                    className='date-picker'
+                    todayButton='Today'
+                    selected={selectedDate}
+                    onChange={date => setSelectedDate(date)}
+                    dateFormat='yyyy-MM-dd'
+                />
+            </div>
+            <h1 className='content-center text-center min-h-full text-4xl'>No games scheduled for selected date</h1>
         </div>
     );
 
