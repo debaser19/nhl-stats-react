@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import GameScore from './GameScore';
 import DatePicker from 'react-datepicker';
+import { format } from 'date-fns';
 import 'react-datepicker/dist/react-datepicker.css'
 
 function createGameScore(game) {
@@ -24,7 +25,7 @@ const GameScores = () => {
     let fullUrl = baseUrl;
     useEffect(() => {
         if (selectedDate) {
-            const dateString = selectedDate.toISOString().substring(0,10)
+            const dateString = format(selectedDate, 'yyyy-MM-dd')
             fullUrl = `${baseUrl}?date=${dateString}`;
         } else {
             fullUrl = baseUrl;
@@ -57,7 +58,7 @@ const GameScores = () => {
             <h1 className='content-center text-center min-h-full text-4xl'>Loading...</h1>
         </div>
     );
-    
+
     return (
         <div className='container mx-auto max-w-6xl'>
             <div className='date-picker-div'>
@@ -76,7 +77,7 @@ const GameScores = () => {
             </div>
 
             <div>
-                <h2 className='text-3xl'>{selectedDate.toISOString().substring(0,10)}</h2>
+                <h2 className='text-3xl'>{format(selectedDate, 'EEEE LLLL d, yyyy')}</h2>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {gameList.map(createGameScore)}
