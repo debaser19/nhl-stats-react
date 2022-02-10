@@ -15,7 +15,8 @@ function createGameScore(game) {
     homeScore = {game.teams.home.score}
     gameState = {game.status.codedGameState}
     gameTime = {game.gameDate}
-    venue = {game.venue.name} />
+    venue = {game.venue.name}
+    gameUrl = {game.link} />
 };
 
 const GameScores = () => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { format } from 'date-fns';
 
 function parseRecord(leagueRecord) {
@@ -40,11 +40,27 @@ const GameScore = (props) => {
       gameBorder = 'border-slate-300';
   };
 
+  const [timeRemaining, setTimeRemaining] = useState(2);
+  const [currentPeriod, setCurrentPeriod] = useState(1);
+
+  useEffect(() => {
+    const getTimeRemaining = async (gameUrl) => {
+      const baseUrl = 'https://statsapi.web.nhl.com'
+      const res = await fetch(baseUrl + gameUrl);
+      const data = await res.json();
+      setCurrentPeriod(data.liveData.linescore.currentPeriodOrdinal)
+      setTimeRemaining(data.liveData.linescore.currentPeriodTimeRemaining)
+    };
+    getTimeRemaining(props.gameUrl);
+  });
+
   return (
     <div className={'container mx-auto score-container m-2 max-w-2xl border-2 ' + gameBorder}>
         <div className='away-container flow-root'>
 			<div className='time-venue-div'>
 				<p>{parseGameTime(props.gameTime)}</p>
+        <p>{currentPeriod}</p>
+        <p>{timeRemaining}</p>
 				<p>{props.venue}</p>
 			</div>
 			<div className='away-team mx-2 min-w-[50%] float-left'>
