@@ -81,7 +81,7 @@ const GameScores = () => {
     );
 
     return (
-        <div className='container mx-auto max-w-6xl'>
+        <div className='container mx-auto'>
             <div className='date-picker-div'>
                 <h2 className='text-2xl'>Select a date</h2>
                 <DatePicker
@@ -93,14 +93,12 @@ const GameScores = () => {
                 />
             </div>
 
-            <div>
+            <div className='m-3 text-center md:text-left'>
                 <h1 className='text-4xl'>Scores</h1>
-            </div>
-
-            <div>
                 <h2 className='text-3xl'>{format(selectedDate, 'EEEE LLLL d, yyyy')}</h2>
             </div>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+
+            <div className="grid grid-cols-1 md:gap-4 md:grid-cols-2 mx-3">
                 {gameList.map(createGameScore)}
             </div>
         </div>
