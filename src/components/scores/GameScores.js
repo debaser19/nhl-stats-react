@@ -93,7 +93,7 @@ const GameScores = () => {
             </div>
 
             <div>
-                <h1 className='text-4xl'>Scores test</h1>
+                <h1 className='text-4xl'>Scores</h1>
             </div>
 
             <div>
