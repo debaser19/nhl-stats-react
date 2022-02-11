@@ -36,8 +36,8 @@ const Standings = () => {
     );
 
     return (
-        <div className='container mx-auto content-center'>
-            <div className = 'grid grid-cols-2 gap-4'>
+        <div className='divisions-container mx-auto content-center mx-3'>
+            <div className = 'grid grid-cols-1 md:grid-cols-2 gap-4'>
                 {standingsList.map(createDivisionCard)}
             </div>
         </div>

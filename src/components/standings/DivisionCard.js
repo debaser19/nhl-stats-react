@@ -2,8 +2,8 @@ import React from 'react';
 
 const DivisionCard = (props) => {
     return (
-        <div>
-            <h2 className='text-2xl'>{props.division}</h2>
+        <div className='division-card'>
+            <h2 className='text-2xl text-center'>{props.division}</h2>
             <table className='standings-table'>
                 <thead>
                     <tr>

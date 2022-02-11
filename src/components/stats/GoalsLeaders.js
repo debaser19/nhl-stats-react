@@ -37,7 +37,7 @@ const GoalsLeaders = () => {
                 </thead>
                 <tbody>
                     {goalsLeaders.map(goalsLeader => (
-                        <tr key={goalsLeader.key}>
+                        <tr>
                             <td>{goalsLeader.person.fullName}</td>
                             <td>{goalsLeader.value}</td>
                         </tr>

@@ -57,3 +57,18 @@ code {
 .time-venue-div p:first-child {
   font-weight: bold;
 }
+
+.divisions-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.division-card table {
+  width: 100%;
+}
+
+.player-stats-container,
+.goalie-stats-container {
+  display: flex;
+  justify-content: space-around;
+}

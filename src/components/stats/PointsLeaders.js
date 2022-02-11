@@ -37,7 +37,7 @@ const PointsLeaders = () => {
                 </thead>
                 <tbody>
                     {pointsLeaders.map(pointsLeader => (
-                        <tr key={pointsLeader.key}>
+                        <tr>
                             <td>{pointsLeader.person.fullName}</td>
                             <td>{pointsLeader.value}</td>
                         </tr>

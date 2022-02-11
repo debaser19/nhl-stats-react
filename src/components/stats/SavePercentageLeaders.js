@@ -37,7 +37,7 @@ const SavePercentageLeaders = () => {
                 </thead>
                 <tbody>
                     {savePercentageLeaders.map(savePercentageLeader => (
-                        <tr key={savePercentageLeader.key}>
+                        <tr>
                             <td>{savePercentageLeader.person.fullName}</td>
                             <td>{savePercentageLeader.value}</td>
                         </tr>
