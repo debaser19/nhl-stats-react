@@ -16,6 +16,61 @@ code {
     monospace;
 }
 
+/* Nav */
+.nav-container {
+  height: 80px;
+  background: rgb(15, 23, 42);
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.mobile-nav {
+  display: flex;
+  align-items: center;
+}
+.mobile-nav ul {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background:rgb(15, 23, 42);
+  width: 100%;
+  border-top: 2px solid rgb(241, 245, 249);
+  top: 80px;
+  left: 0;
+  z-index: 100;
+}
+.mobile-nav ul li {
+  padding: 10px 25px;
+}
+.hamburger {
+  position: absolute;
+  left: 5%;
+  cursor: pointer;
+}
+nav {
+  display: inline;
+  margin: 0 auto;
+  vertical-align: middle;
+}
+nav ul {
+  color: rgb(241, 245, 249);
+  font-size: x-large;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav ul li {
+  margin: 0 20px;
+}
+nav ul li:hover {
+  color: #ccc;
+}
+
+@media (min-width: 768px) {
+  nav ul {
+    height: 100%;
+  }
+}
+
 .standings-table {
   text-align: center;
 }

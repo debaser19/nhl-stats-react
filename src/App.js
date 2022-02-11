@@ -1,4 +1,5 @@
 import Header from './components/Header';
+import NavBar from './components/NavBar/NavBar';
 import GameScores from './components/scores/GameScores';
 import Stats from './components/stats/Stats';
 import Standings from './components/standings/Standings';
@@ -9,7 +10,7 @@ function App() {
 	return (
 		<div className="App">
     		<Router>
-        		<Header />
+        		<NavBar />
         		<Routes>
 					<Route path='/' element={<GameScores />} />
 					<Route path='/stats' element={<Stats />} />
