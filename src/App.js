@@ -1,4 +1,3 @@
-import Header from './components/Header';
 import NavBar from './components/NavBar/NavBar';
 import GameScores from './components/scores/GameScores';
 import Stats from './components/stats/Stats';
