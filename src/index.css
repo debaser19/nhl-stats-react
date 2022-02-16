@@ -78,6 +78,11 @@ nav ul li:hover {
   border: 1px solid #ccc;
   padding: 5px 10px;
 }
+@media (max-width: 768px) {
+  .standings-table td, .standings-table th {
+    padding: 2px 5px;
+  }
+}
 .standings-table th {
   font-weight: bold;
 }

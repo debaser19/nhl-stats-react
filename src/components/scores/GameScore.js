@@ -59,9 +59,8 @@ const GameScore = (props) => {
         <div className='away-container flow-root'>
 			<div className='time-venue-div'>
 				<p>{parseGameTime(props.gameTime)}</p>
-        <p>{currentPeriod}</p>
         <p>{timeRemaining}</p>
-				<p>{props.venue}</p>
+        <p>{currentPeriod}</p>
 			</div>
 			<div className='away-team mx-2 min-w-[50%] float-left'>
             	<div className='text-2xl'>{props.awayTeam}</div>
