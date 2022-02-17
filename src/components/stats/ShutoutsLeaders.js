@@ -37,7 +37,7 @@ const ShutoutsLeaders = () => {
                 </thead>
                 <tbody>
                     {shutoutsLeaders.map(shutoutsLeader => (
-                        <tr>
+                        <tr key = {shutoutsLeader.person.id}>
                             <td>{shutoutsLeader.person.fullName}</td>
                             <td>{shutoutsLeader.value}</td>
                         </tr>

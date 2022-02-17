@@ -37,7 +37,7 @@ const AssistsLeaders = () => {
                 </thead>
                 <tbody>
                     {assistsLeaders.map(assistsLeaders => (
-                        <tr>
+                        <tr key = {assistsLeaders.person.id}>
                             <td>{assistsLeaders.person.fullName}</td>
                             <td>{assistsLeaders.value}</td>
                         </tr>
