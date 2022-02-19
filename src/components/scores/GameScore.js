@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { AiOutlineDown, AiOutlineUp } from 'react-icons/ai';
 import { format } from 'date-fns';
+import Linescore from './Linescore';
 
 function parseRecord(leagueRecord) {
 	return `${leagueRecord.wins}-${leagueRecord.losses}-${leagueRecord.ot}`
@@ -42,6 +44,21 @@ const GameScore = (props) => {
 
   const [timeRemaining, setTimeRemaining] = useState(2);
   const [currentPeriod, setCurrentPeriod] = useState(1);
+  const [linescore, setLinescore] = useState(null);
+  const [expanded, setExpanded] = useState(false);
+
+	const getLinescore = () => {
+		return (
+			<div>
+				<Linescore />
+				<AiOutlineUp onClick={() => setExpanded(!expanded)} className='mx-auto expand-arrow' />
+			</div>
+		);
+	}
+
+	const somethingElse = () => {
+		return true;
+	}
 
   useEffect(() => {
     const getTimeRemaining = async (gameUrl) => {
@@ -50,6 +67,7 @@ const GameScore = (props) => {
       const data = await res.json();
       setCurrentPeriod(data.liveData.linescore.currentPeriodOrdinal)
       setTimeRemaining(data.liveData.linescore.currentPeriodTimeRemaining)
+	  setLinescore(data.liveData.linescore)
     };
     getTimeRemaining(props.gameUrl);
   });
@@ -57,15 +75,15 @@ const GameScore = (props) => {
   return (
     <div className={'container mx-auto score-container m-2 max-w-2xl border-2 ' + gameBorder}>
         <div className='away-container flow-root'>
-			<div className='time-venue-div'>
+        	<div className='time-venue-div'>
 				<p>{parseGameTime(props.gameTime)}</p>
-        <p>{timeRemaining}</p>
-        <p>{currentPeriod}</p>
-			</div>
-			<div className='away-team mx-2 min-w-[50%] float-left'>
-            	<div className='text-2xl'>{props.awayTeam}</div>
-				<div className='text-gray-400'>{parseRecord(props.awayRecord)}</div>
-			</div>
+				<p>{timeRemaining}</p>
+				<p>{currentPeriod}</p>
+        	</div>
+        	<div className='away-team mx-2 min-w-[50%] float-left'>
+                <div className='text-2xl'>{props.awayTeam}</div>
+            	<div className='text-gray-400'>{parseRecord(props.awayRecord)}</div>
+          	</div>
             <div className='away-score mx-5 text-3xl float-right'>{props.awayScore}</div>
         </div>
         <div className='home-container flow-root'>
@@ -75,6 +93,9 @@ const GameScore = (props) => {
 			</div>
 			<div className='home-score mx-5 text-3xl float-right'>{props.homeScore}</div>
         </div>
+		{expanded ? getLinescore() :
+		<AiOutlineDown onClick={() => setExpanded(!expanded)} className='mx-auto expand-arrow' />}
+		
     </div>
   );
 };
