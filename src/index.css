@@ -137,3 +137,16 @@ nav ul li:hover {
 .expand-arrow {
   cursor: pointer;
 }
+
+.linescore-container {
+  display: flex;
+  justify-content: space-around;
+}
+.linescore-container th,
+.linescore-container td {
+  padding: 10px 40px;
+  text-align: center;
+}
+.linescore-container td:last-child {
+  font-weight: bold;
+}

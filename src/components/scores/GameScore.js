@@ -50,14 +50,13 @@ const GameScore = (props) => {
 	const getLinescore = () => {
 		return (
 			<div>
-				<Linescore />
+				<Linescore
+          linescore={linescore.linescore}
+          decisions={linescore.decisions}
+        />
 				<AiOutlineUp onClick={() => setExpanded(!expanded)} className='mx-auto expand-arrow' />
 			</div>
 		);
-	}
-
-	const somethingElse = () => {
-		return true;
 	}
 
   useEffect(() => {
@@ -67,7 +66,7 @@ const GameScore = (props) => {
       const data = await res.json();
       setCurrentPeriod(data.liveData.linescore.currentPeriodOrdinal)
       setTimeRemaining(data.liveData.linescore.currentPeriodTimeRemaining)
-	  setLinescore(data.liveData.linescore)
+	    setLinescore(data.liveData)
     };
     getTimeRemaining(props.gameUrl);
   });

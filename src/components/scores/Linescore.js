@@ -1,27 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import LinescorePeriods from './LinescorePeriods';
+import AwayGoals from './AwayGoals';
+import HomeGoals from './HomeGoals';
 
-const Linescore = () => {
+const Linescore = (props) => {
+    const [periods, setPeriods] = useState(props.linescore.periods);
+
+    const createPeriods = (linescore) => {
+        return <LinescorePeriods period={linescore.ordinalNum} />;
+    }
+
+    const createAwayGoals = (linescore) => {
+        return <AwayGoals goals={linescore.away.goals} />;
+    }
+
+    const createHomeGoals = (linescore) => {
+        return <HomeGoals goals={linescore.home.goals} />;
+    }
+    
     return (
         <div className='linescore-container'>
             <table>
                 <thead>
-                    <th>1</th>
-                    <th>2</th>
-                    <th>3</th>
-                    <th>f</th>
+                    <tr>
+                        {periods.map(createPeriods)}
+                        <th>Total</th>
+                    </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>0</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
+                        {periods.map(createAwayGoals)}
+                        <td>{props.linescore.teams.away.goals}</td>
                     </tr>
                     <tr>
-                        <td>2</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>4</td>
+                        {periods.map(createHomeGoals)}
+                        <td>{props.linescore.teams.home.goals}</td>
                     </tr>
                 </tbody>
             </table>
