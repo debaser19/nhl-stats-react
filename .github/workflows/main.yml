@@ -19,5 +19,6 @@ jobs:
         script: |
           git clone https://github.com/debaser19/nhl-stats-react.git
           cd nhl-stats-react
+          git pull
           docker build -f Dockerfile -t nhl_stats:prod .
           docker run -d --restart always --rm -p 1337:80 nhl_stats:prod
