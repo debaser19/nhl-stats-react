@@ -10,15 +10,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Pull changes from master
-      uses: fifsky/ssh-action@master
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
-        user: sstoveld
-        key: ${{ secrets.SSH_SECRET }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.SSHKEY }}
         port: 22
-        command: |
+        script: |
           cd /home/sstoveld/dev/nhl-stats-react
           git pull origin master
-          npm install
-          npm run build
-          cp -R build /var/www/html
+          docker build -f Dockerfile -t debaser19/nhl_stats:prod .
+          docker run -d --restart always --rm -p 1337:80 nhl_stats:prod
